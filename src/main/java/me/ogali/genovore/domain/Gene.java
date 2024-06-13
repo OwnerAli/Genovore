@@ -48,7 +48,7 @@ public class Gene {
         // Add triggerable abilities
 //        abilityPool.add(new DashAbility("Dash", "Dash", 1, random.nextFloat()));
 //        abilityPool.add(new DoubleJumpAbility("DoubleJump", "DoubleJump", 1));
-        abilityPool.add(new FireballTriggerableAbility("Fireball", "Fireball", 5, Trigger.ON_DOUBLE_CROUCH,
+        abilityPool.add(new FireballTriggerableAbility("Fireball", "Fireball", 5, Trigger.DOUBLE_CROUCH,
                 random.nextInt(10)));
 //        abilityPool.add(new ShieldAbility("Shield", "Shield", 1));
 //        abilityPool.add(new TeleportAbility("Teleport", "Teleport", 1));

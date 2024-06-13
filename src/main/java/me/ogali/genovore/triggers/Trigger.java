@@ -2,9 +2,10 @@ package me.ogali.genovore.triggers;
 
 public enum Trigger {
 
-    ON_DOUBLE_CROUCH,
-    ON_DOUBLE_JUMP,
-    ON_DAMAGE,
-    ON_KILL
+    DOUBLE_CROUCH,
+    DOUBLE_JUMP,
+    DAMAGE,
+    KILL,
+    RIGHT_CLICK_AIR_WITH_EMPTY_HAND
 
 }

@@ -25,11 +25,13 @@ public class Individual {
         });
     }
 
-    public void triggerGene(String geneId, Trigger trigger) {
-        getGeneById(geneId).getAbilitiesList().forEach(ability -> {
-            if (!(ability instanceof SpigotEntityTriggerableAbility triggerableAbility)) return;
-            if (triggerableAbility.getTrigger() != trigger) return;
-            triggerableAbility.trigger(player);
+    public void triggerGene(Trigger trigger) {
+        geneList.forEach(gene -> {
+            gene.getAbilitiesList().forEach(ability -> {
+                if (!(ability instanceof SpigotEntityTriggerableAbility triggerableAbility)) return;
+                if (triggerableAbility.getTrigger() != trigger) return;
+                triggerableAbility.trigger(player);
+            });
         });
     }
 

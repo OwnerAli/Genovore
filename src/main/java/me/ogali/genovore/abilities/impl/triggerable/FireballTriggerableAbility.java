@@ -21,7 +21,6 @@ public class FireballTriggerableAbility extends SpigotEntityTriggerableAbility {
 
     @Override
     public void removeEffect(Entity target) {
-
     }
 
     @Override

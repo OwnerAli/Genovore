@@ -27,6 +27,7 @@ public final class GenovorePlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
+
     }
 
     public void initializePlugin() {

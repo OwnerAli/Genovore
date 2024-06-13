@@ -1,0 +1,6 @@
+name: Genovore
+version: '${project.version}'
+main: me.ogali.genovore.GenovorePlugin
+api-version: '1.20'
+authors: [OG_Ali]
+description: Dominate the genetic frontier by collecting, evolving, and mastering the DNA of diverse life forms to become the ultimate genetic overlord.

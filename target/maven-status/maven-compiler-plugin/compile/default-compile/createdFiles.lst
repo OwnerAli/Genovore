@@ -2,7 +2,6 @@ me\ogali\genovore\chromosomes\Chromosome.class
 me\ogali\genovore\abilities\TriggerableAbility.class
 me\ogali\genovore\abilities\impl\passive\FlyPassiveAbility.class
 me\ogali\genovore\players\Individual.class
-me\ogali\genovore\domain\Gene.class
 me\ogali\genovore\abilities\impl\passive\WalkSpeedPassiveAbility.class
 me\ogali\genovore\runnables\GeneEvolutionRunnable.class
 me\ogali\genovore\abilities\impl\FloatValuePassiveAbility.class
@@ -16,6 +15,7 @@ me\ogali\genovore\abilities\impl\passive\ParticlePassiveAbility.class
 me\ogali\genovore\abilities\impl\SpigotEntityPassiveAbility.class
 me\ogali\genovore\cooldowns\Cooldown.class
 me\ogali\genovore\abilities\Ability.class
+me\ogali\genovore\genes\Gene.class
 me\ogali\genovore\utils\Chat.class
 me\ogali\genovore\abilities\impl\SpigotEntityTriggerableAbility.class
 me\ogali\genovore\abilities\PassiveAbility.class

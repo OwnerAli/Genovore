@@ -1,7 +1,7 @@
 package me.ogali.genovore.chromosomes;
 
 import lombok.Getter;
-import me.ogali.genovore.domain.Gene;
+import me.ogali.genovore.genes.Gene;
 
 import java.util.ArrayList;
 import java.util.List;

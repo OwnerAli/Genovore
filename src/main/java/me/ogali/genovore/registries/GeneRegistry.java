@@ -6,7 +6,7 @@ import me.ogali.genovore.abilities.impl.passive.FlyPassiveAbility;
 import me.ogali.genovore.abilities.impl.passive.JumpBoostPassiveAbility;
 import me.ogali.genovore.abilities.impl.passive.ParticlePassiveAbility;
 import me.ogali.genovore.abilities.impl.passive.WalkSpeedPassiveAbility;
-import me.ogali.genovore.domain.Gene;
+import me.ogali.genovore.genes.Gene;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -2,7 +2,7 @@ package me.ogali.genovore.players;
 
 import me.ogali.genovore.abilities.impl.SpigotEntityPassiveAbility;
 import me.ogali.genovore.abilities.impl.SpigotEntityTriggerableAbility;
-import me.ogali.genovore.domain.Gene;
+import me.ogali.genovore.genes.Gene;
 import me.ogali.genovore.triggers.Trigger;
 import org.bukkit.entity.Player;
 

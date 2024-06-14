@@ -9,9 +9,12 @@ import me.ogali.genovore.abilities.impl.passive.JumpBoostPassiveAbility;
 import me.ogali.genovore.abilities.impl.passive.ParticlePassiveAbility;
 import me.ogali.genovore.abilities.impl.passive.WalkSpeedPassiveAbility;
 import me.ogali.genovore.abilities.impl.triggerable.FireballTriggerableAbility;
+import me.ogali.genovore.abilities.impl.triggerable.TeleportTriggerableAbility;
 import me.ogali.genovore.triggers.Trigger;
+import me.ogali.genovore.utils.Chat;
 import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +29,13 @@ public class Gene {
     public Gene(String id) {
         this.abilitiesList = new ArrayList<>();
         this.id = id;
-        initializeAbilitiesList();
     }
 
     public void addAbility(SpigotEntityPassiveAbility ability) {
         abilitiesList.add(ability);
     }
 
-    private void initializeAbilitiesList() {
+    public void initializeAbilitiesList(Player player) {
         GenovorePlugin instance = GenovorePlugin.getInstance();
         Random random = instance.getRandom();
 
@@ -50,6 +52,8 @@ public class Gene {
 //        abilityPool.add(new DoubleJumpAbility("DoubleJump", "DoubleJump", 1));
         abilityPool.add(new FireballTriggerableAbility("Fireball", "Fireball", 5, Trigger.DOUBLE_CROUCH,
                 random.nextInt(10)));
+        abilityPool.add(new TeleportTriggerableAbility("Teleport", "Teleport", 5, Trigger.RIGHT_CLICK_AIR_EMPTY,
+                random.nextInt(10), random.nextDouble()));
 //        abilityPool.add(new ShieldAbility("Shield", "Shield", 1));
 //        abilityPool.add(new TeleportAbility("Teleport", "Teleport", 1));
 //        abilityPool.add(new InvisibilityAbility("Invisibility", "Invisibility", 1));
@@ -60,6 +64,7 @@ public class Gene {
             Ability<Entity> ability = abilityPool.get(random.nextInt(abilityPool.size()));
             if (!abilitiesList.contains(ability)) {
                 abilitiesList.add(ability);
+                Chat.tell(player, "You have unlocked the " + ability + " ability!");
             }
         }
     }

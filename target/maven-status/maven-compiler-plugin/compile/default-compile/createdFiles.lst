@@ -6,6 +6,7 @@ me\ogali\genovore\domain\Gene.class
 me\ogali\genovore\abilities\impl\passive\WalkSpeedPassiveAbility.class
 me\ogali\genovore\runnables\GeneEvolutionRunnable.class
 me\ogali\genovore\abilities\impl\FloatValuePassiveAbility.class
+me\ogali\genovore\abilities\impl\triggerable\TeleportTriggerableAbility.class
 me\ogali\genovore\listeners\AbilityTriggerListener.class
 me\ogali\genovore\abilities\impl\passive\JumpBoostPassiveAbility.class
 me\ogali\genovore\GenovorePlugin.class

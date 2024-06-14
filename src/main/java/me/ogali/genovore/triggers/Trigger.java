@@ -6,6 +6,6 @@ public enum Trigger {
     DOUBLE_JUMP,
     DAMAGE,
     KILL,
-    RIGHT_CLICK_AIR_WITH_EMPTY_HAND
+    RIGHT_CLICK_AIR_EMPTY
 
 }

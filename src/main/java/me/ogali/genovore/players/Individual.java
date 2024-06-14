@@ -18,6 +18,7 @@ public class Individual {
         this.player = player;
         this.geneList = new ArrayList<>();
         Gene power = new Gene("POWER");
+        power.initializeAbilitiesList(player);
         geneList.add(power);
         power.getAbilitiesList().forEach(ability -> {
             if (ability instanceof SpigotEntityPassiveAbility passiveAbility)
@@ -26,13 +27,11 @@ public class Individual {
     }
 
     public void triggerGene(Trigger trigger) {
-        geneList.forEach(gene -> {
-            gene.getAbilitiesList().forEach(ability -> {
-                if (!(ability instanceof SpigotEntityTriggerableAbility triggerableAbility)) return;
-                if (triggerableAbility.getTrigger() != trigger) return;
-                triggerableAbility.trigger(player);
-            });
-        });
+        geneList.forEach(gene -> gene.getAbilitiesList().forEach(ability -> {
+            if (!(ability instanceof SpigotEntityTriggerableAbility triggerableAbility)) return;
+            if (triggerableAbility.getTrigger() != trigger) return;
+            triggerableAbility.trigger(player);
+        }));
     }
 
     public Gene getGeneById(String geneId) {

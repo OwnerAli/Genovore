@@ -54,7 +54,7 @@ public class AbilityTriggerListener implements Listener {
         GenovorePlugin.getInstance()
                 .getIndividualRegistry()
                 .get(event.getPlayer())
-                .ifPresent(individual -> individual.triggerGene(Trigger.RIGHT_CLICK_AIR_WITH_EMPTY_HAND));
+                .ifPresent(individual -> individual.triggerGene(Trigger.RIGHT_CLICK_AIR_EMPTY));
     }
 
 }

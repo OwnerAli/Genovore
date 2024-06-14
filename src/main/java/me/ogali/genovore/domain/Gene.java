@@ -53,7 +53,7 @@ public class Gene {
         abilityPool.add(new FireballTriggerableAbility("Fireball", "Fireball", 5, Trigger.DOUBLE_CROUCH,
                 random.nextInt(10)));
         abilityPool.add(new TeleportTriggerableAbility("Teleport", "Teleport", 5, Trigger.RIGHT_CLICK_AIR_EMPTY,
-                random.nextInt(10), random.nextDouble()));
+                random.nextInt(10), random.nextDouble(32 - 3) + 3));
 //        abilityPool.add(new ShieldAbility("Shield", "Shield", 1));
 //        abilityPool.add(new TeleportAbility("Teleport", "Teleport", 1));
 //        abilityPool.add(new InvisibilityAbility("Invisibility", "Invisibility", 1));
@@ -64,7 +64,7 @@ public class Gene {
             Ability<Entity> ability = abilityPool.get(random.nextInt(abilityPool.size()));
             if (!abilitiesList.contains(ability)) {
                 abilitiesList.add(ability);
-                Chat.tell(player, "You have unlocked the " + ability + " ability!");
+                Chat.tell(player, "You've undergone a gene mutation, you can now use:\n" + ability.getUnlockText());
             }
         }
     }

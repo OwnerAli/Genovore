@@ -1,7 +1,6 @@
 package me.ogali.genovore.abilities.impl.passive;
 
 import me.ogali.genovore.abilities.impl.SpigotEntityPassiveAbility;
-import me.ogali.genovore.utils.Chat;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
@@ -25,8 +24,7 @@ public class FlyPassiveAbility extends SpigotEntityPassiveAbility {
 
     @Override
     public String getUnlockText() {
-        return Chat.colorize("&4&l{{}} &cA mutation has occurred with the jump gene! \n" +
-                "&cYou can now fly! &4&l{{}}");
+        return "&b&lFly";
     }
 
 }

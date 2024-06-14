@@ -50,7 +50,6 @@ public class AbilityTriggerListener implements Listener {
     @EventHandler
     public void onRightClickWithEmptyHand(PlayerInteractEvent event) {
         if (!Action.RIGHT_CLICK_AIR.equals(event.getAction())) return;
-        if (event.getItem() != null) return;
         GenovorePlugin.getInstance()
                 .getIndividualRegistry()
                 .get(event.getPlayer())

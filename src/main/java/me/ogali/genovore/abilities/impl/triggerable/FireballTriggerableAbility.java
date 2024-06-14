@@ -25,7 +25,8 @@ public class FireballTriggerableAbility extends SpigotEntityTriggerableAbility {
 
     @Override
     public String getUnlockText() {
-        return "";
+        return "&6&lFireball\n" +
+                "&fCooldown: " + cooldownTimeInSeconds + " seconds";
     }
 
 }

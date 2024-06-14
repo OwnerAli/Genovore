@@ -24,7 +24,7 @@ public class WalkSpeedPassiveAbility extends FloatValuePassiveAbility {
 
     @Override
     public String getUnlockText() {
-        return "";
+        return "&f&lWalk Speed";
     }
 
 }

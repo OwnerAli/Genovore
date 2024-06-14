@@ -37,7 +37,7 @@ public class JumpBoostPassiveAbility extends FloatValuePassiveAbility {
 
     @Override
     public String getUnlockText() {
-        return "";
+        return "&a&lJump";
     }
 
 }

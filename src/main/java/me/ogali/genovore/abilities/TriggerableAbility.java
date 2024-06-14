@@ -8,13 +8,16 @@ import org.bukkit.command.CommandSender;
 
 public abstract class TriggerableAbility<T> extends Ability<T> {
 
+    @Getter
     private final Cooldown cooldown;
     @Getter
     private final Trigger trigger;
+    protected final long cooldownTimeInSeconds;
 
     protected TriggerableAbility(String name, String description, double cost, Trigger trigger, long cooldownTimeInSeconds) {
         super(name, description, cost);
         this.trigger = trigger;
+        this.cooldownTimeInSeconds = cooldownTimeInSeconds;
         cooldown = new Cooldown(cooldownTimeInSeconds);
     }
 

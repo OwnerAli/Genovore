@@ -39,7 +39,7 @@ public class ParticlePassiveAbility extends SpigotEntityPassiveAbility {
 
     @Override
     public String getUnlockText() {
-        return "";
+        return "&6&lParticle";
     }
 
 }

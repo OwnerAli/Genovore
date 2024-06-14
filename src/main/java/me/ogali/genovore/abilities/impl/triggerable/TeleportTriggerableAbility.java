@@ -2,7 +2,9 @@ package me.ogali.genovore.abilities.impl.triggerable;
 
 import me.ogali.genovore.abilities.impl.SpigotEntityTriggerableAbility;
 import me.ogali.genovore.triggers.Trigger;
+import org.bukkit.Location;
 import org.bukkit.entity.Entity;
+import org.bukkit.util.Vector;
 
 public class TeleportTriggerableAbility extends SpigotEntityTriggerableAbility {
 
@@ -17,9 +19,13 @@ public class TeleportTriggerableAbility extends SpigotEntityTriggerableAbility {
 
     @Override
     public void applyEffect(Entity target) {
-        target.teleport(target.getLocation().getDirection()
-                .add(target.getLocation().toVector().multiply(range))
-                .toLocation(target.getWorld()));
+        Location targetLocation = target.getLocation();
+        Vector targetDirection = targetLocation.getDirection();
+
+        targetDirection.multiply(range);
+        Location newLocation = targetLocation.add(targetDirection);
+
+        target.teleport(newLocation);
     }
 
     @Override
@@ -29,7 +35,9 @@ public class TeleportTriggerableAbility extends SpigotEntityTriggerableAbility {
 
     @Override
     public String getUnlockText() {
-        return "";
+        return "&c&lTeleportation\n" +
+                "&fRange: " + range + " blocks\n" +
+                "&fCooldown: " + cooldownTimeInSeconds + " seconds";
     }
 
 }

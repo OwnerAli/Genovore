@@ -4,11 +4,10 @@ import lombok.Setter;
 import me.ogali.genovore.abilities.impl.SpigotEntityTriggerableAbility;
 import me.ogali.genovore.triggers.Trigger;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.util.RayTraceResult;
+import org.bukkit.util.BlockIterator;
 import org.bukkit.util.Vector;
 
 @Setter
@@ -27,41 +26,10 @@ public class TeleportTriggerableAbility extends SpigotEntityTriggerableAbility {
     public void applyEffect(Entity target) {
         if (!(target instanceof Player player)) return;
 
-        Location entityLocation = target.getLocation();
-        Vector targetDirection = entityLocation.getDirection();
-        targetDirection.multiply(range);
-        Location targetLocation = entityLocation.clone().add(targetDirection);
+        Location targetLocation = getFurthestVisibleLocation(player, (int) range);
+        if (targetLocation == null) return;
 
-        // Perform a ray trace to find any blocks in the path
-        RayTraceResult rayTraceResult = player.rayTraceBlocks(range);
-
-        if (rayTraceResult != null) {
-            Block rayTraceHitBlock = rayTraceResult.getHitBlock();
-
-            if (rayTraceHitBlock != null) {
-                // Calculate the location just before the hit block
-                Vector hitBlockVector = rayTraceHitBlock.getLocation().toVector();
-                Vector playerVector = entityLocation.toVector();
-                Vector direction = playerVector.subtract(hitBlockVector).normalize();
-
-                // Move back exactly one block from the hit block
-                Location safeLocation = rayTraceHitBlock.getLocation().add(direction);
-
-                // Ensure the safe location is not inside a block
-                if (safeLocation.getBlock().getType() != Material.AIR) {
-                    safeLocation = safeLocation.getWorld().getHighestBlockAt(safeLocation).getLocation().add(0, 1, 0);
-                }
-
-                targetLocation = safeLocation;
-            }
-        } else {
-            // If no block is hit, check if the target location is inside a block
-            if (targetLocation.getWorld() != null && targetLocation.getBlock().getType() != Material.AIR) {
-                targetLocation = targetLocation.getWorld().getHighestBlockAt(targetLocation).getLocation().add(0, 1, 0);
-            }
-        }
-
-        target.teleport(targetLocation);
+        player.teleport(targetLocation);
     }
 
     @Override
@@ -74,6 +42,31 @@ public class TeleportTriggerableAbility extends SpigotEntityTriggerableAbility {
         return "&c&lTeleportation\n" +
                 "&fRange: " + range + " blocks\n" +
                 "&fCooldown: " + cooldownTimeInSeconds + " seconds";
+    }
+
+    private Location getFurthestVisibleLocation(Player player, int maxRange) {
+        Location eyeLocation = player.getEyeLocation();
+        Vector direction = eyeLocation.getDirection();
+        BlockIterator iterator = new BlockIterator(player.getWorld(), eyeLocation.toVector(),
+                direction, 0, maxRange);
+
+        Location lastValidLocation = null;
+        while (iterator.hasNext()) {
+            Block block = iterator.next();
+            if (!block.getType().isSolid()) {
+                lastValidLocation = block.getLocation();
+            } else {
+                break;
+            }
+        }
+
+        if (lastValidLocation != null) {
+            Location highestBlockLocation = player.getWorld().getHighestBlockAt(lastValidLocation).getLocation();
+            highestBlockLocation.setPitch(player.getLocation().getPitch());
+            highestBlockLocation.setYaw(player.getLocation().getYaw());
+            return highestBlockLocation.add(0.5, 1, 0.5); // Adjust to center player above the block
+        }
+        return null;
     }
 
 }

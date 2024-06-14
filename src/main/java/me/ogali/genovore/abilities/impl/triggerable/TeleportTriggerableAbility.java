@@ -19,11 +19,12 @@ public class TeleportTriggerableAbility extends SpigotEntityTriggerableAbility {
 
     @Override
     public void applyEffect(Entity target) {
-        Location targetLocation = target.getLocation();
-        Vector targetDirection = targetLocation.getDirection();
+        Location entityLocation = target.getLocation();
+        Vector targetDirection = entityLocation.getDirection();
 
         targetDirection.multiply(range);
-        Location newLocation = targetLocation.add(targetDirection);
+        Location targetLocation = entityLocation.add(targetDirection);
+        Location newLocation = targetLocation.getWorld().getHighestBlockAt(targetLocation).getLocation();
 
         target.teleport(newLocation);
     }
